@@ -30,7 +30,7 @@ const MyFirstApp = () => {
       <FlatList
         data={items}
         renderItem={({ item }) => (
-          <View className=''>
+          <View>
             <Text
             style={styles.itemText}>{item.value}</Text>
             <TouchableOpacity onPress={() => removeItem(item)}>
