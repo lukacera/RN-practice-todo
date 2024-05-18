@@ -18,10 +18,9 @@ const MyFirstApp = () => {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.header}>My First App</Text>
+    <SafeAreaView >
+      <Text className=''>My AGpp</Text>
       <TextInput
-        style={styles.input}
         onChangeText={setText}
         value={text}
         placeholder="Type something"
@@ -31,10 +30,9 @@ const MyFirstApp = () => {
         data={items}
         renderItem={({ item }) => (
           <View>
-            <Text
-            style={styles.itemText}>{item.value}</Text>
+            <Text>{item.value}</Text>
             <TouchableOpacity onPress={() => removeItem(item)}>
-              <Text style={styles.removeButton}>
+              <Text>
                 <AntDesign name="closecircle" size={24} color="red" 
                 />              
               </Text>
@@ -46,42 +44,5 @@ const MyFirstApp = () => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: '#F5FCFF',
-  },
-  header: {
-    fontSize: 24,
-    textAlign: 'center',
-    margin: 10,
-  },
-  input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    paddingLeft: 8,
-    marginBottom: 10,
-  },
-  itemContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingVertical: 10,
-    paddingLeft: 5,
-    backgroundColor: 'yellow',
-    marginVertical: 5,
-  },
-  itemText: {
-    fontSize: 18,
-  },
-  removeButton: {
-    fontSize: 18,
-    color: 'red',
-    paddingHorizontal: 10,
-  }
-});
 
 export default MyFirstApp;
