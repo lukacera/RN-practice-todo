@@ -4,8 +4,9 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 
 export default function HeaderLogo() {
   return (
-    <View className="flex mt-10 justify-center items-center flex-row gap-3">
-        <Text className="font-serif text-[2rem]">
+    <View className="flex mt-20 justify-center items-center flex-row gap-3">
+        <Text className="font-serif text-[2rem] font-bold"
+        style={{fontFamily:"Lato_400Regular"}}>
           To-do app
         </Text>
         <View className="relative">

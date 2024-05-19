@@ -7,7 +7,7 @@ export default function TodoInput() {
     const [text, setText] = useState<string>("");
     
     return (
-    <View className="flex items-center justify-center mt-20 flex-col gap-5 relative">
+    <View className="flex items-center justify-center mt-10 flex-col gap-5 relative">
     {/* Circles */}
     <View className="flex flex-row gap-5 justify-center mr-5">
       {/* Urgent */}
