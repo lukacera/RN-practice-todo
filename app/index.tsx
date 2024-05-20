@@ -26,32 +26,7 @@ const IndexPage = () => {
     hideSplash();
   }, [fontsLoaded]);
 
-  const [todos, setTodos] = useState<TodoType[]>([
-    {
-      text: "Running tomorrow at 7am",
-      urgency: "important",
-    },
-    {
-      text: "Finish the project report by 5pm",
-      urgency: "urgent",
-    },
-    {
-      text: "Buy groceries for the week",
-      urgency: "important",
-    },
-    {
-      text: "Call mom to check in",
-      urgency: "non-urgent",
-    },
-    {
-      text: "Schedule dentist appointment",
-      urgency: "important",
-    },
-    {
-      text: "Clean the garage this weekend",
-      urgency: "non-urgent",
-    },
-  ]);
+  const [todos, setTodos] = useState<TodoType[]>([]);
   
   return (
     <SafeAreaView className="h-screen bg-primary">

@@ -11,15 +11,16 @@ export const Todo:React.FC<{
   // deletes it from array of todos
   const checkTodo = (todo: TodoType): void => {
     setTodos(prevTodos => (
-      prevTodos.filter(prevTodo => prevTodo.text !== todo.text)
+      prevTodos.filter(prevTodo => prevTodo.id !== todo.id)
     ))
   }
 
   return (
-    <View className="bg-secondary px-5 py-3 flex-row items-center justify-between gap-10">
+    <View className="bg-secondary py-5 px-4 flex-row items-center 
+    justify-between gap-10 w-[20rem] ">
       <Text
         className={`
-          text-lg
+          text-lg max-w-[13remgg]
           ${todo.urgency === 'urgent' ? 'text-red-500' :
           todo.urgency === 'important' ? 'text-yellow-500' : 'text-green-500'
           }
