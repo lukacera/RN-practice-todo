@@ -1,5 +1,5 @@
 import React, {Dispatch, SetStateAction, useState} from 'react'
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, TouchableWithoutFeedback } from 'react-native'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import {TodoType} from "@/types/TodoType"
 import { v4 as uuidv4 } from 'uuid';
@@ -12,11 +12,17 @@ export const TodoInput:React.FC<{
 
     const [urgency, setUrgency] = useState<"urgent" | "important" | "non-urgent" >("urgent")
     
-    // Function to add todos to list of todos
-    const addTodo = (todo: TodoType): void => {
-      if(todo.text.length > 2 ){
+    // Function to add todos to list of todos, only if there
+    // are more than 3 or more chars in text
+    const addTodo = (): void => {
+      if(text.length > 2 ){
         setTodos(prevTodos => (
-          [...prevTodos, todo]
+          [...prevTodos, {
+            text: text,
+            urgency: urgency,
+            id: uuidv4(),
+            date: new Date()
+          }]
         ))
         setText("")
       }
@@ -27,26 +33,29 @@ export const TodoInput:React.FC<{
       {/* Circles */}
       <View className="flex flex-row gap-5 justify-center mr-5">
         {/* Urgent */}
-        <TouchableOpacity onPress={() => setUrgency("urgent")}>
+        <TouchableWithoutFeedback onPress={() => setUrgency("urgent")}>
         <View className="flex items-center gap-2">
           <Text className="text-red-500 font-semibold">Urgent</Text>
-          <View className="w-8 aspect-square rounded-full bg-red-500"></View>
+          <View className={`w-8 aspect-square rounded-full bg-red-500
+          ${urgency === "urgent" && "border-2 border-black"}`}></View>
         </View>
-        </TouchableOpacity>
+        </TouchableWithoutFeedback>
         {/* Important */}
-        <TouchableOpacity onPress={() => setUrgency("important")}>
+        <TouchableWithoutFeedback onPress={() => setUrgency("important")}>
         <View className="flex items-center gap-2">
           <Text className="text-yellow-500 font-semibold">Important</Text>
-          <View className="w-8 aspect-square rounded-full bg-yellow-500"></View>
+          <View className={`w-8 aspect-square rounded-full bg-yellow-500
+          ${urgency === "important" && "border-2 border-black"}`}></View>
         </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => setUrgency("non-urgent")}>
+        </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => setUrgency("non-urgent")}>
           {/* Non-Urgent */}
         <View className="flex items-center gap-2">
           <Text className="text-green-500 font-semibold">Non-Urgent</Text>
-          <View className="w-8 aspect-square rounded-full bg-green-500"></View>
+          <View className={`w-8 aspect-square rounded-full bg-green-500
+          ${urgency === "non-urgent" && "border-2 border-black"}`}></View>
         </View>
-        </TouchableOpacity>
+        </TouchableWithoutFeedback>
       </View>
       <View className="flex flex-row items-center gap-5">
         <TextInput
@@ -60,11 +69,7 @@ export const TodoInput:React.FC<{
             "text-yellow-500"
           }`}
         />
-        <Text onPress={() => addTodo({
-          text: text,
-          urgency: urgency,
-          id: uuidv4()
-        })}>
+        <Text onPress={() => addTodo()}>
           <AntDesign name="pluscircle" size={28} color="#4D869C" />
         </Text>
       </View>

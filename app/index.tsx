@@ -8,6 +8,7 @@ import { Todo } from "@/components/Todo";
 import { TodoType } from "@/types/TodoType";
 import { useState, useEffect } from "react";
 import * as SplashScreen from 'expo-splash-screen';
+import SortingDropdown from "@/components/SortingDropdown";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -36,9 +37,15 @@ const IndexPage = () => {
 
       {/* Todos list */}
       <View className="flex items-center justify-center mt-10 gap-5">
-        <Text className="text-4xl" style={{fontFamily: "Lato_900Black"}}>
-          My todos
-        </Text>
+        <View className="relative">
+          <Text className="text-4xl" style={{fontFamily: "Lato_900Black"}}>
+            My todos
+          </Text>
+          <View className="absolute top-0 -right-32">
+            <SortingDropdown />
+          </View>
+        </View>
+    
         <ScrollView className="flex">
           {todos.map(todo => (
             <Todo key={uuidv4()} 

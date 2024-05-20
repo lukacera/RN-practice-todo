@@ -16,11 +16,11 @@ export const Todo:React.FC<{
   }
 
   return (
-    <View className="bg-secondary py-5 px-4 flex-row items-center 
-    justify-between gap-10 w-[20rem] ">
+    <View className="bg-secondary py-3 px-4 flex-row items-center 
+    justify-between gap-10 w-[25rem] ">
       <Text
         className={`
-          text-lg max-w-[13rem]
+          text-lg max-w-[19rem]
           ${todo.urgency === 'urgent' ? 'text-red-500' :
           todo.urgency === 'important' ? 'text-yellow-500' : 'text-green-500'
           }
