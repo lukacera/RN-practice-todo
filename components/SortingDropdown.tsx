@@ -12,7 +12,7 @@ export default function SortingDropdown() {
     };
 
     return (
-        <View>
+        <View className={`absolute -right-32 ${selectedOption === "Most Urgent" ? "-top-4" : "top-0"}`}>
             <TouchableWithoutFeedback onPress={() => setIsOpen(!isOpen)}>
                 <View className='flex flex-row 
                 bg-secondary items-center gap-3 px-2 py-3 
@@ -22,7 +22,7 @@ export default function SortingDropdown() {
                     ) : (
                         <AntDesign name="down" size={15} color="black" />
                     )}
-                    <Text className='font-semibold'>
+                    <Text className='font-semibold w-20'>
                         {selectedOption}
                     </Text>
                 </View>
@@ -37,7 +37,7 @@ export default function SortingDropdown() {
                         </Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => handleOptionSelect('Most Urgent')}>
-                        <Text className='px-4 py-2 w-auto'>
+                        <Text className='px-4 py-2'>
                             Most Urgent
                         </Text>
                     </TouchableOpacity>

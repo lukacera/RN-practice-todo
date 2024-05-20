@@ -41,9 +41,7 @@ const IndexPage = () => {
           <Text className="text-4xl" style={{fontFamily: "Lato_900Black"}}>
             My todos
           </Text>
-          <View className="absolute top-0 -right-32">
             <SortingDropdown />
-          </View>
         </View>
     
         <ScrollView className="flex -z-10">
