@@ -1,10 +1,25 @@
-import React, {useState} from 'react'
+import React, {Dispatch, SetStateAction, useState} from 'react'
 import { View, Text, TextInput } from 'react-native'
 import AntDesign from '@expo/vector-icons/AntDesign';
+import {TodoType} from "@/types/TodoType"
 
-export default function TodoInput() {
+
+export const TodoInput:React.FC<{
+  setTodos: Dispatch<SetStateAction<TodoType[]>>
+}> = ({setTodos}) => {
 
     const [text, setText] = useState<string>("");
+
+    // Function to add todos to list of todos
+    const addTodo = (todo: TodoType): void => {
+      if(todo.text.length > 2 ){
+        setTodos(prevTodos => (
+          [...prevTodos, todo]
+        ))
+        setText("")
+      }
+      
+    }
     
     return (
     <View className="flex items-center justify-center mt-10 flex-col gap-5 relative">
@@ -33,7 +48,10 @@ export default function TodoInput() {
         placeholder='Running at 7am'
         className="bg-white min-w-[17rem] px-5 py-2 rounded-lg shadow-lg"
       />
-      <Text>
+      <Text onPress={() => addTodo({
+        text: text,
+        urgency: 'urgent'
+      })}>
         <AntDesign name="pluscircle" size={28} color="#4D869C" />
       </Text>
     </View>
