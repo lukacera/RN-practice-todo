@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { Text, TouchableWithoutFeedback, View, TouchableOpacity } from 'react-native';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
-export default function SortingDropdown() {
+export const SortingDropdown: React.FC<{
+    setSortMethod:Dispatch<SetStateAction<"Most Urgent" | "Newest">>
+}> = ({setSortMethod}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState('Newest');
 
     const handleOptionSelect = (option: "Newest" | "Most Urgent") => {
+        setSortMethod(option)
         setIsOpen(false);
         setSelectedOption(option)
     };
