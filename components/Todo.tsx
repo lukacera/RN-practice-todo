@@ -20,7 +20,7 @@ export const Todo:React.FC<{
     justify-between gap-10 w-[20rem] ">
       <Text
         className={`
-          text-lg max-w-[13remgg]
+          text-lg max-w-[13rem]
           ${todo.urgency === 'urgent' ? 'text-red-500' :
           todo.urgency === 'important' ? 'text-yellow-500' : 'text-green-500'
           }
