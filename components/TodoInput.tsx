@@ -1,8 +1,7 @@
 import React, {Dispatch, SetStateAction, useState} from 'react'
-import { View, Text, TextInput } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import {TodoType} from "@/types/TodoType"
-
 
 export const TodoInput:React.FC<{
   setTodos: Dispatch<SetStateAction<TodoType[]>>
@@ -10,6 +9,7 @@ export const TodoInput:React.FC<{
 
     const [text, setText] = useState<string>("");
 
+    const [urgent, setUrgent] = useState<"urgent" | "important" | "non-urgent" >("urgent")
     // Function to add todos to list of todos
     const addTodo = (todo: TodoType): void => {
       if(todo.text.length > 2 ){
@@ -26,27 +26,41 @@ export const TodoInput:React.FC<{
     {/* Circles */}
     <View className="flex flex-row gap-5 justify-center mr-5">
       {/* Urgent */}
+      <TouchableOpacity onPress={() => setUrgent("urgent")}>
       <View className="flex items-center gap-2">
         <Text className="text-red-500 font-semibold">Urgent</Text>
         <View className="w-8 aspect-square rounded-full bg-red-500"></View>
       </View>
+      </TouchableOpacity>
       {/* Important */}
+      <TouchableOpacity onPress={() => setUrgent("important")}>
       <View className="flex items-center gap-2">
         <Text className="text-yellow-500 font-semibold">Important</Text>
         <View className="w-8 aspect-square rounded-full bg-yellow-500"></View>
       </View>
-      {/* Non-Urgent */}
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => setUrgent("non-urgent")}>
+        {/* Non-Urgent */}
       <View className="flex items-center gap-2">
         <Text className="text-green-500 font-semibold">Non-Urgent</Text>
         <View className="w-8 aspect-square rounded-full bg-green-500"></View>
       </View>
+      </TouchableOpacity>
+     
+     
+      
     </View>
     <View className="flex flex-row items-center gap-5">
       <TextInput
         value={text}
         onChangeText={setText}
         placeholder='Running at 7am'
-        className="bg-white min-w-[17rem] px-5 py-2 rounded-lg shadow-lg"
+        className={`bg-white min-w-[17rem] px-5 
+        py-2 rounded-lg shadow-lg text-[1.25rem]
+        ${urgent === "urgent" ? "text-red-500" : 
+          urgent === "non-urgent" ? "text-green-500" :
+          "text-yellow-500"
+        }`}
       />
       <Text onPress={() => addTodo({
         text: text,

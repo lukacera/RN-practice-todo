@@ -67,7 +67,7 @@ const IndexPage = () => {
         <ScrollView className="flex">
           {todos.map(todo => (
             <Todo key={uuidv4()} 
-            text={todo.text} urgency={todo.urgency}
+            setTodos={setTodos} todo={todo}
             />
           ))}
         </ScrollView>
