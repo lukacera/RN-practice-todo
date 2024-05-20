@@ -22,7 +22,7 @@ export const Todo:React.FC<{
         className={`
           text-lg max-w-[19rem]
           ${todo.urgency === 'urgent' ? 'text-red-500' :
-          todo.urgency === 'important' ? 'text-yellow-500' : 'text-green-500'
+          todo.urgency === 'important' ? 'text-yellow-500' : 'text-green-600'
           }
         `}
       >
