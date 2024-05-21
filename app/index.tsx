@@ -49,13 +49,13 @@ const IndexPage = () => {
 
 
   return (
-    <SafeAreaView className="h-screen bg-primary">
+    <SafeAreaView className="bg-primary flex-1 h-auto">
       <HeaderLogo />
       {/* Main part, all of todos and input for it */}
       <TodoInput setTodos={setTodos}/>
 
       {/* Todos list */}
-      <View className="flex items-center justify-center mt-10 gap-5">
+      <View className="flex flex-1 items-center justify-center mt-10 gap-5">
         <View className="relative">
           <Text className="text-4xl" style={{fontFamily: "Lato_900Black"}}>
             My todos
@@ -69,7 +69,7 @@ const IndexPage = () => {
             </Text>
           </View>
         }
-        <ScrollView className="flex -z-10">
+        <ScrollView  showsVerticalScrollIndicator={false} className="flex -z-10 mb-5">
           {sortedTodos.map(todo => (
             <Todo key={uuidv4()} 
             setTodos={setTodos} todo={todo}
